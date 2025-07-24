@@ -15,6 +15,10 @@ resource "azurerm_service_plan" "this" {
   tags                            = var.tags
   worker_count                    = local.worker_count
   zone_balancing_enabled          = var.zone_balancing_enabled
+
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 # required AVM resources interfaces
